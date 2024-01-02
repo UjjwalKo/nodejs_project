@@ -12,6 +12,14 @@ const pool = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
+pool.query(`CREATE TABLE IF NOT EXISTS items (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT
+)`, (err) => {
+  if (err) throw err;
+  console.log('Items table created or already exists');
+});
 
 
 // EJS setup
