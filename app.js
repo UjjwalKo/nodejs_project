@@ -7,10 +7,12 @@ const pg = require('pg');
 
 const app = express();
 
-// PostgreSQL configuration
+// PostgreSQL configuration with SSL
 const pool = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
+  ssl: true,
 });
+
 
 pool.query(`CREATE TABLE IF NOT EXISTS items (
   id SERIAL PRIMARY KEY,
