@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD App</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>ToDo Notes</h1>
+  <ul>
+    <% items.forEach(item => { %>
+      <li>
+        <%= item.name %> - <%= item.description %>
+        <a href="/edit/<%= item.id %>">Edit</a>
+        <form action="/delete/<%= item.id %>?_method=DELETE" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+  <div class="add-new-button">
+    <a href="/new">Add New Item</a>
+  </div>
+  <!-- <a href="/new">Add New Item</a> -->
+</body>
+</html>
